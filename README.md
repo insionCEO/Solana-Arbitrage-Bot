@@ -1,57 +1,119 @@
-![Zenpress](https://github.com/insionng/zenpress/raw/master/public/favicon.png)
+# Solana  Arbitrage Bot
 
-Zenpress
-===
-Zenpress是一个灵感来源于wordpress的cms项目，最终目标是实现一个简单和强大的Golang CMS系统网站，以内置Qlang语言的纯GO VM实现来动态解析脚本，从而实现插件支持，作小许改动后可以应用为Blog、企业站、小说站、图站等多种类型网站..
+A simple Solana onchain arbitrage bot for arbitrage opportunities. This bot calculate the most optimal trade size between various DEX pools on Solana and executes trades when profitable opportunities are found. This repository utilizes the onchain program for executing arbitrage trades.
 
+**This is a demo bot to show how to parse each pool and call the onchain program.**
+**This is NOT a fully functional bot. This is only recommanded for advanced users to use as a reference.**
+**For new users please use the full featured bot to get started:**
 
-基于[MAKROSS](https://github.com/insionng/makross)框架和[GORM](https://github.com/jinzhu/gorm)，于2017年06月10日开始重写。
+Example transaction:
+https://solscan.io/tx/2JtgbXAgwPib9L5Ruc5vLhQ5qeX5EMhVDQbcCaAYVJKpEFn22ArEqXhipu5fFyhrEwosiHWzRUhWispJUCYyAnKT
 
-已实现插件机制及主题机制的支持！
+Program:
+https://solscan.io/account/MEViEnscUm6tsQRoGd9h6nLQaQspKj7DB2M5FwM3Xvz
 
+## Features
 
+- Load configuration from a config file
+- Create ATA if not exist
+- Send transactions through multiple RPC endpoints (spam)
+- Kamino flashloan integration
+- Parse all available pool types (Raydium, DLMM, Whirlpool, etc.)
 
-## 轻量级社区版本
+## Supported Dexes
 
-[YouGam社区](http://www.yougam.com/) 支持PostgreSQL、MySQL、Sqlite3、Go/Leveldb、Boltdb、Tidb等等数据库
+- Pump AMM
+- Raydium V4
+- Raydium CPMM
+- Raydium CLMM
+- Meteora DLMM
+- Meteora Dynamic AMM
+- Meteora DAMM V2
+- Orca Whirlpool
+- SolFi
+- Vertigo
 
-(采用reddit系列算法而类似V2EX的轻社区,购买系统请联系作者：QQ547092001/微信xiongtuntianxia)
+## Getting Started
 
-问题反馈：https://github.com/insionng/yougam/issues
+### Prerequisites
 
+- Rust and Cargo installed
+- A Solana wallet with SOL
 
+### Installation
 
-# 通过捐款支持Zenpress项目
-如果你喜欢这个项目的话， 可以通过捐款的方式， 支持作者继续更新本项目或者做出其他更多好玩好用的开源应用： 比如为本项目修补漏洞、添加更多有趣的功能， 或者发行有更多更棒特性的下一版等等。
+1. Clone the repository
 
-支付宝捐款地址： 赞助我写更多更好的开源项目 insion@live.com
+   ```
+   git clone https://github.com/x89/Solana-Arbitrage-Bot.git
+   cd Solana-Arbitrage-Bot
+   ```
 
-![Donation](https://github.com/insionng/zenpress/raw/master/public/donation.jpg)
+2. Update config.toml file
 
+3. Run the bot
+   ```
+   cargo run --release --bin Solana-Arbitrage-Bot -- --config config.toml
+   ```
 
-请求
-===
-    Golang 1.9
+### Configuration
 
-安装
-===
-    go get -u github.com/insionng/zenpress
+1. Copy the example configuration file:
+   ```
+   cp config.toml.example config.toml
+   ```
+2. Edit `config.toml` and configure your:
+   - Private key for your Solana wallet
+   - RPC endpoint URL(s)
+3. Configure your trading pairs and pools:
+   - Update the `mint_config_list` with your desired token mints
+   - Add the corresponding pool addresses for each DEX type (Raydium, DLMM, Whirlpool, etc.)
+   - Ensure lookup table accounts are properly set for your trading pairs
 
-    cd $GOPATH/src/github.com/insionng/zenpress
+## Configuration Options
 
-    go build
-    
-    screen -dmS zenpress ./zenpress
+### Bot Configuration
 
+- `compute_unit_limit`: Maximum compute unit limit per transaction
+- `process_delay`: Delay between processing iterations in milliseconds
 
-## 交流联系
-欢迎大家加入QQ专用交流群:245386165/作者QQ：547092001，微信账号：xiongtuntianxia
+### Routing Configuration
 
-技术分享：[http://www.yougam.com](http://www.yougam.com)
+- `mint_config_list`: List of mints to process
+  - `mint`: Mint address
+  - `raydium_pool_list`: List of Raydium pool addresses
+  - `meteora_damm_pool_list`: List of Meteora Dynamic AMM pool addresses
+  - `meteora_dlmm_pool_list`: List of Meteora DLMM pool addresses
+  - `meteora_damm_v2_pool_list`: List of Meteora DAMM V2 pool addresses
+  - `raydium_cp_pool_list`: List of Raydium CP pool addresses
+  - `pump_pool_list`: List of Pump pool addresses
+  - `whirlpool_pool_list`: List of Whirlpool pool addresses
+  - `raydium_clmm_pool_list`: List of Raydium CLMM pool addresses
+  - `solfi_pool_list`: List of Solfi pool addresses
+  - `vertigo_pool_list`: List of Vertigo pool addresses
+  - `lookup_table_accounts`: List of lookup table accounts
+  - `process_delay`: Process delay in milliseconds
 
-凝视网络：[http://www.nilyes.com](http://www.nilyes.com)
+### RPC Configuration
 
+- `url`: RPC URL for the Solana network
 
-## 授权许可
-除特别声明外，本项目代码遵循[BSD 3-Clause License](<http://opensource.org/licenses/BSD-3-Clause/>)（3项条款的BSD许可协议）。
-作者本人及凝视网络保留本项目著作权。
+### Spam Configuration
+
+- `enabled`: Enable spam transactions
+- `sending_rpc_urls`: List of RPC URLs for sending transactions
+- `compute_unit_price`: Fixed compute unit price
+- `max_retries`: Maximum retries
+- `enable_simple_send`: Enable simple send mode
+
+### Wallet Configuration
+
+- `private_key`: Private key (can be path or environment variable)
+
+### Kamino Flashloan Configuration
+
+- `enabled`: Enable Kamino flashloan
+
+## License
+
+MIT
