@@ -119,10 +119,11 @@ Access metrics at `http://localhost:9090/metrics`:
    - Rustfmt formatting
    - Passing tests
    - Updated documentation
-🤝 Connect With Me
+## 🤝 Connect With Me
 For questions, custom implementations, or consulting services:
-📱 Telegram: [@insionCEO](https://t.me/insionCEO)
+- 📱 Telegram: [@insionCEO](https://t.me/insionCEO)
 💼 Commercial support available
+
 
 ## 📜 License
 MIT - See LICENSE for details
