@@ -1,6 +1,3 @@
-Here's the complete, ready-to-copy README.md code with all technical and SEO optimizations:
-
-```markdown
 # 🔄 Solana Cross-DEX Arbitrage Bot
 
 ![Solana](https://img.shields.io/badge/Solana-3E1F70?logo=solana&logoColor=white)
