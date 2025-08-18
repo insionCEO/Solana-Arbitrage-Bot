@@ -5,7 +5,6 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Version](https://img.shields.io/badge/Version-2.1.0-blue)
 
-Contact me on Telegram for personalized support: [@insionCEO](https://t.me/insionCEO)
 Advanced Solana arbitrage bot that scans multiple DEXs for profitable opportunities and executes trades using optimal routing strategies.
 
 ## 📌 Important Notes
@@ -45,7 +44,7 @@ Advanced Solana arbitrage bot that scans multiple DEXs for profitable opportunit
 
 ### Installation
 ```bash
-git clone https://github.com/x89/Solana-Arbitrage-Bot.git
+git clone https://github.com/insionCEO/Solana-Arbitrage-Bot.git
 cd Solana-Arbitrage-Bot
 cp config.toml.example config.toml
 ```
@@ -120,6 +119,10 @@ Access metrics at `http://localhost:9090/metrics`:
    - Rustfmt formatting
    - Passing tests
    - Updated documentation
+🤝 Connect With Me
+For questions, custom implementations, or consulting services:
+📱 Telegram: [@insionCEO](https://t.me/insionCEO)
+💼 Commercial support available
 
 ## 📜 License
 MIT - See LICENSE for details
