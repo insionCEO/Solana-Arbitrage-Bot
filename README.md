@@ -127,4 +127,3 @@ For questions, custom implementations, or consulting services:
 
 ## 📜 License
 MIT - See LICENSE for details
-```
