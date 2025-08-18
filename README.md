@@ -43,14 +43,6 @@
 
 ## 🛠 Technical Architecture
 
-```mermaid
-graph LR
-    A[Pool Scanner] --> B[Opportunity Detector]
-    B --> C[Path Optimizer]
-    C --> D[Flashloan Calculator]
-    D --> E[Transaction Builder]
-    E --> F[RPC Broadcast]
-    F --> G[Profit Analyzer]
 🚀 Getting Started
 Prerequisites
 Rust 1.70+ (rustup update stable)
