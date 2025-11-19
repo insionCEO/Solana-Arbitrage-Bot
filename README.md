@@ -6,7 +6,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Version](https://img.shields.io/badge/Version-2.1.0-blue)
 
-Advanced Solana arbitrage bot that scans multiple DEXs for profitable opportunities and executes trades using optimal routing strategies.
+Solana arbitrage bot that scans multiple DEXs for profitable opportunities and executes trades using optimal routing strategies.
 
 ## 📌 Important Notes
 
