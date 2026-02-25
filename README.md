@@ -24,7 +24,6 @@ Read the full explanatory article on Medium:
 ## 📞 Contact & Support
 
 - **Telegram:** https://t.me/insionCEO  
-- **Discord:** `insionceo0`  
 - **Email:** amazingrace8190@gmail.com  
 
 💼 Consulting & custom Solana bot development available.
